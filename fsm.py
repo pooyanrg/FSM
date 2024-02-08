@@ -4,9 +4,8 @@ from FAdo.fa import *
 from graphviz import Digraph
 import json
 import pandas as pd
-from collections import defaultdict
 
-class fsm(object):
+class FSM(object):
 
     def __init__(self, numStates, numAlphabet):
 
@@ -267,7 +266,7 @@ def visualize_dfa(dfa):
 
 
 def createDFA(numStates, numAlphabet):
-    dfa = fsm(numStates, numAlphabet)
+    dfa = FSM(numStates, numAlphabet)
     states, accepts, trans = dfa.removeUnreachableStates()
     dfa.states = states
     dfa.accepting_states = accepts
