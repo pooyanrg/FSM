@@ -115,7 +115,7 @@ class FSM(object):
         fsm_instance.transitions = fsm_dict["transitions"]
         return fsm_instance
 
-    def convert(self):
+    def convertToString(self):
 
         metadata = "#fsm: "
 
