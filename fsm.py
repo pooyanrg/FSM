@@ -90,6 +90,17 @@ class FSM(object):
 
         return pd.DataFrame(trans_mat), self.initial_state, self.accepting_states
     
+    def serialize(self):
+        # Convert the fsm instance into a dictionary
+        fsm_dict = {
+            "states": self.states,
+            "alphabets": self.alphabets,
+            "accepting_states": self.accepting_states,
+            "initial_state": self.initial_state,
+            "transitions": self.transitions,
+        }
+        return json.dumps(fsm_dict)
+    
     @classmethod
     def deserialize(cls, json_string):
         # Convert the JSON string back into a dictionary
@@ -137,7 +148,7 @@ class FSM(object):
     def randomStringInLanguage(self):
 
         if len(self.accepting_states) == 0:
-            return ""
+            return None
 
         currentState = self.accepting_states[int(np.floor(random.random()*len(self.accepting_states)))]
         trail = []
