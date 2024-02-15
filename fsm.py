@@ -145,6 +145,28 @@ class FSM(object):
 
         return metadata
     
+    def checkString(self, input):
+
+        currentState = self.initial_state
+        trail = []
+        observed_states = []
+        result = "reject"
+
+        for i in range(len(input)):
+            for trans in self.transitions:
+                if trans['symbol'] == input[i] and trans['fromState'] == currentState:
+                    observed_states.append(currentState)
+                    currentState = trans['toStates'][0]
+                    trail.append(trans['symbol'])
+                    break
+        
+        observed_states.append(currentState)
+
+        if currentState in self.accepting_states:
+            result = "accept"
+
+        return result, trail, observed_states, currentState
+    
     def randomStringInLanguage(self):
 
         if len(self.accepting_states) == 0:
@@ -309,8 +331,8 @@ def simple_test():
 # simple_test()
     
 
-# fs = """{"states": ["s0", "s2", "s3"], "alphabets": "abcd", "accepting_states": ["s2", "s0"], "initial_state": "s0", "transitions": [{"fromState": "s0", "symbol": "a", "toStates": ["s2"]}, {"fromState": "s0", "symbol": "b", "toStates": ["s0"]}, {"fromState": "s0", "symbol": "c", "toStates": ["s3"]}, {"fromState": "s0", "symbol": "d", "toStates": ["s3"]}, {"fromState": "s2", "symbol": "a", "toStates": ["s0"]}, {"fromState": "s2", "symbol": "b", "toStates": ["s0"]}, {"fromState": "s2", "symbol": "c", "toStates": ["s0"]}, {"fromState": "s2", "symbol": "d", "toStates": ["s3"]}, {"fromState": "s3", "symbol": "a", "toStates": ["s2"]}, {"fromState": "s3", "symbol": "b", "toStates": ["s3"]}, {"fromState": "s3", "symbol": "c", "toStates": ["s0"]}, {"fromState": "s3", "symbol": "d", "toStates": ["s0"]}]}"""
-# d = fsm.deserialize(fs)
-# gg = d.getTransitionMatrix()
+fs = """{"states": ["s0", "s2", "s3"], "alphabets": "abcd", "accepting_states": ["s2", "s0"], "initial_state": "s0", "transitions": [{"fromState": "s0", "symbol": "a", "toStates": ["s2"]}, {"fromState": "s0", "symbol": "b", "toStates": ["s0"]}, {"fromState": "s0", "symbol": "c", "toStates": ["s3"]}, {"fromState": "s0", "symbol": "d", "toStates": ["s3"]}, {"fromState": "s2", "symbol": "a", "toStates": ["s0"]}, {"fromState": "s2", "symbol": "b", "toStates": ["s0"]}, {"fromState": "s2", "symbol": "c", "toStates": ["s0"]}, {"fromState": "s2", "symbol": "d", "toStates": ["s3"]}, {"fromState": "s3", "symbol": "a", "toStates": ["s2"]}, {"fromState": "s3", "symbol": "b", "toStates": ["s3"]}, {"fromState": "s3", "symbol": "c", "toStates": ["s0"]}, {"fromState": "s3", "symbol": "d", "toStates": ["s0"]}]}"""
+d = FSM.deserialize(fs)
+gg = d.checkString("ab")
 
-# print("T")
+print("T")
