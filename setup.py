@@ -10,6 +10,5 @@ setup(
         'fado',
         'graphviz',
         'pandas',
-        'json',
     ],
 )
