@@ -331,8 +331,8 @@ def simple_test():
 # simple_test()
     
 
-fs = """{"states": ["s0", "s2", "s3"], "alphabets": "abcd", "accepting_states": ["s2", "s0"], "initial_state": "s0", "transitions": [{"fromState": "s0", "symbol": "a", "toStates": ["s2"]}, {"fromState": "s0", "symbol": "b", "toStates": ["s0"]}, {"fromState": "s0", "symbol": "c", "toStates": ["s3"]}, {"fromState": "s0", "symbol": "d", "toStates": ["s3"]}, {"fromState": "s2", "symbol": "a", "toStates": ["s0"]}, {"fromState": "s2", "symbol": "b", "toStates": ["s0"]}, {"fromState": "s2", "symbol": "c", "toStates": ["s0"]}, {"fromState": "s2", "symbol": "d", "toStates": ["s3"]}, {"fromState": "s3", "symbol": "a", "toStates": ["s2"]}, {"fromState": "s3", "symbol": "b", "toStates": ["s3"]}, {"fromState": "s3", "symbol": "c", "toStates": ["s0"]}, {"fromState": "s3", "symbol": "d", "toStates": ["s0"]}]}"""
-d = FSM.deserialize(fs)
-gg = d.checkString("ab")
+# fs = """{"states": ["s0", "s2", "s3"], "alphabets": "abcd", "accepting_states": ["s2", "s0"], "initial_state": "s0", "transitions": [{"fromState": "s0", "symbol": "a", "toStates": ["s2"]}, {"fromState": "s0", "symbol": "b", "toStates": ["s0"]}, {"fromState": "s0", "symbol": "c", "toStates": ["s3"]}, {"fromState": "s0", "symbol": "d", "toStates": ["s3"]}, {"fromState": "s2", "symbol": "a", "toStates": ["s0"]}, {"fromState": "s2", "symbol": "b", "toStates": ["s0"]}, {"fromState": "s2", "symbol": "c", "toStates": ["s0"]}, {"fromState": "s2", "symbol": "d", "toStates": ["s3"]}, {"fromState": "s3", "symbol": "a", "toStates": ["s2"]}, {"fromState": "s3", "symbol": "b", "toStates": ["s3"]}, {"fromState": "s3", "symbol": "c", "toStates": ["s0"]}, {"fromState": "s3", "symbol": "d", "toStates": ["s0"]}]}"""
+# d = FSM.deserialize(fs)
+# gg = d.checkString("ab")
 
-print("T")
+# print("T")
