@@ -90,7 +90,6 @@ class FSM(object):
 
         return pd.DataFrame(trans_mat), self.initial_state, self.accepting_states
     
-    @classmethod
     def serialize(self):
         # Convert the fsm instance into a dictionary
         fsm_dict = {
